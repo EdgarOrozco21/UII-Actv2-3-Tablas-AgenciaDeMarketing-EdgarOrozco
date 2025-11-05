@@ -25,6 +25,7 @@
 ```python
 from django.db import models
 
+
 # ========================================== #
 # MODELO: EMPLEADO (Pendiente)
 # ==========================================#
@@ -74,6 +75,27 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+### 📂 Estructura del Proyecto
+UII_Agencia_De_Marketing_0591/
+├── .venv/                      # Entorno Virtual de Python (Paso 4)
+├── backend_agencia_de_marketing/ # Proyecto Principal (Paso 8)
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py             # Configuración de apps/URLs principales (Paso 25)
+│   ├── urls.py                 # Enrutamiento principal (Paso 26)
+│   └── wsgi.py
+├── app_clientes/               # Aplicación CRUD Clientes (Paso 11)
+│   ├── migrations/
+│   ├── templates/              # Carpeta de Templates
+│   │   ├── cliente/            # Templates específicos de la app
+│   │   │   ├── agregar_cliente.html (Paso 28)
+│   │   │   ├── actualizar_cliente.html (Paso 30)
+│   │   │   └── ver_clientes.html (Paso 29)
+│   │   ├── base.html           # Layout Principal (Paso 17)
+│   │   ├── navbar.html         # Barra de Navegación (Paso 18)
+│   │   ├── footer.html         # Pie de Página (Paso 19)
+│   │   └── inicio.html         # Página de Inicio (Paso 20)
 
 
 ##  Hacer Migraciones
@@ -656,3 +678,12 @@ def borrar_cliente(request, id_cliente):
 {% endblock %}
 
 
+│   ├── __init__.py
+│   ├── admin.py                # Registro de Modelos (Paso 27)
+│   ├── apps.py
+│   ├── models.py               # Definición de Clientes/Empleados/Proyectos (Paso 12)
+│   ├── tests.py
+│   ├── urls.py                 # URLs de la aplicación (Paso 24)
+│   └── views.py                # Lógica del CRUD (Paso 14)
+├── manage.py                   # Script de Gestión de Django
+└── README.md                   # (Este Archivo)
