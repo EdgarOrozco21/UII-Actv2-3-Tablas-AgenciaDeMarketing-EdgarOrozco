@@ -76,7 +76,7 @@ class Proyecto(models.Model):
         return self.nombre
 
 
-##Hacer Migraciones
+##  Hacer Migraciones
 python manage.py makemigrations app_clientes
 python manage.py migrate
 
@@ -105,15 +105,19 @@ urlpatterns = [
 ##  27. Registro en Administración (app_clientes/admin.py)
 
 
+
 Solo se registra el modelo Cliente por ahora.
-# app_clientes/admin.py
+
+## app_clientes/admin.py
 
 from django.contrib import admin
 from .models import Cliente, Empleado, Proyecto
 
-# Registrado el modelo Cliente (Paso 27)
+## Registrado el modelo Cliente (Paso 27)
 admin.site.register(Cliente)
-# Empleado y Proyecto pendientes
+
+## Empleado y Proyecto pendientes
+
 
 🔑 Vistas y Rutas para CRUD (Clientes)
 ## 24. Rutas de la Aplicación (app_clientes/urls.py)
@@ -193,93 +197,11 @@ def realizar_actualizacion_cliente(request, id_cliente):
 def borrar_cliente(request, id_cliente):
     cliente = get_object_or_404(Cliente, id=id_cliente)
     cliente.delete()
-    return redirect('ver_clientes')
-
-¡Absolutamente! Aquí tienes el contenido completo, en un solo bloque, formateado con Markdown y con todos los encabezados (#, ##, ###) y bloques de código (```lenguaje) listos para que lo copies y pegues directamente en el archivo .md de tu repositorio (como README.md o leerme_primera_parte.md).
-
-Esto garantizará que se vea bien en el preview de GitHub.
-
-Markdown
-
-# 🚀 Proyecto: UII_Agencia_De_Marketing_0591 (Primera Parte)
-
-**Lenguaje:** Python | **Framework:** Django | **Editor:** VS Code
-
----
-
-## 💻 Procedimientos de Configuración Inicial
-
-| Paso | Procedimiento | Comando de Terminal |
-| :--- | :--- | :--- |
-| **1** | Crear carpeta del Proyecto | `mkdir UII_Agencia_De_Marketing_0591` |
-| **2** | Abrir VS Code sobre la carpeta | `cd UII_Agencia_De_Marketing_0591` seguido de `code .` |
-| **3** | Abrir Terminal en VS Code | `Ctrl + Shift + \`` |
-| **4** | Crear carpeta entorno virtual `.venv` | `python -m venv .venv` |
-| **5** | Activar el entorno virtual | `source .venv/bin/activate` (Linux/macOS) o `.venv\Scripts\activate` (Windows) |
-| **6** | Activar intérprete de python | *(Automático al activar el entorno)* |
-| **7** | Instalar Django | `pip install django` |
-| **8** | Crear proyecto `backend_agencia_de_marketing` sin duplicar carpeta | `django-admin startproject backend_agencia_de_marketing .` |
-| **11**| Crear aplicación `app_clientes` | `python manage.py startapp app_clientes` |
-
-## 🛠️ Modelos, Migraciones y Configuración Core
-
-### 12. Modelos (`app_clientes/models.py`)
-
+    return redirect('ver_clientes')|
 
 
 ```python
 from django.db import models
-
-# ========================================== #
-# MODELO: EMPLEADO (Pendiente)
-# ==========================================#
-class Empleado(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
-    puesto = models.CharField(max_length=50)
-    correo = models.CharField(max_length=100, unique=True)
-    telefono = models.CharField(max_length=20, blank=True, null=True)
-    fecha_contratacion = models.DateField()
-    salario = models.DecimalField(max_digits=10, decimal_places=2)
-    area = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nombre
-
-# ========================================== #
-# MODELO: CLIENTE (Foco Principal)
-# ========================================== #
-class Cliente(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
-    empresa = models.CharField(max_length=100)
-    correo = models.CharField(max_length=100, unique=True)
-    telefono = models.CharField(max_length=20, blank=True, null=True)
-    direccion = models.CharField(max_length=255, blank=True, null=True)
-    fecha_registro = models.DateField(auto_now_add=True)
-    estado = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"{self.nombre} ({self.empresa})"
-
-# ========================================== #
-# MODELO: PROYECTO (Pendiente)
-# ========================================== #
-class Proyecto(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=150)
-    fecha_inicio = models.TextField(help_text="Descripción o detalles del proyecto")
-    fecha_entrega = models.DateField()
-    new_field_3 = models.IntegerField(default=0)
-    presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
-    estado = models.CharField(max_length=50)
-    # Relaciones (Foreign Keys)
-    cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="proyectos")
-    empleado_id = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name="proyectos_asignados")
-
-    def __str__(self):
-        return self.nombre
-
 
 ## 12.5. Procedimiento para Realizar Migraciones
 Bash
