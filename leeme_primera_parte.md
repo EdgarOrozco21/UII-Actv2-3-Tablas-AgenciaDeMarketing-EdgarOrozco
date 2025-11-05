@@ -529,6 +529,51 @@ class ClienteAdmin(admin.ModelAdmin):
 {% endblock %}
 ```
 
+### `templates/cliente/borrar_cliente.html`
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+
+    <a href="{% url 'agregar_cliente' %}">Agregar nuevo cliente</a>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.correo }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>
+                <a href="{% url 'borrar_cliente' cliente.id %}" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+
+```
+
+
 ### `templates/cliente/ver_clientes.html`
 
 ```html
