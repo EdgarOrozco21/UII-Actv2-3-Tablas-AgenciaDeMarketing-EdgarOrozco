@@ -76,7 +76,7 @@ class Proyecto(models.Model):
         return self.nombre
 
 
-## Hacer Migraciones
+##Hacer Migraciones
 python manage.py makemigrations app_clientes
 python manage.py migrate
 
@@ -135,8 +135,8 @@ urlpatterns = [
     path('borrar/<int:id_cliente>/', views.borrar_cliente, name='borrar_cliente'),
 ]
 
-## Vistas de Clientes (app_clientes/views.py)
-# app_clientes/views.py
+### Vistas de Clientes (app_clientes/views.py)
+## app_clientes/views.py
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cliente
