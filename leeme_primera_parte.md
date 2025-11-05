@@ -102,7 +102,9 @@ urlpatterns = [
     path('', include('app_clientes.urls')), 
 ]
 
-## 27 27. Registro en Administración (app_clientes/admin.py)
+##  27. Registro en Administración (app_clientes/admin.py)
+
+
 Solo se registra el modelo Cliente por ahora.
 # app_clientes/admin.py
 
@@ -114,7 +116,9 @@ admin.site.register(Cliente)
 # Empleado y Proyecto pendientes
 
 🔑 Vistas y Rutas para CRUD (Clientes)
-24. Rutas de la Aplicación (app_clientes/urls.py)
+## 24. Rutas de la Aplicación (app_clientes/urls.py)
+
+
 Crear este archivo dentro de la carpeta app_clientes.
 
 # app_clientes/urls.py
@@ -221,6 +225,8 @@ Markdown
 
 ### 12. Modelos (`app_clientes/models.py`)
 
+
+
 ```python
 from django.db import models
 
@@ -273,24 +279,34 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.nombre
-12.5. Procedimiento para Realizar Migraciones
+
+
+## 12.5. Procedimiento para Realizar Migraciones
 Bash
+
+
 
 python manage.py makemigrations app_clientes
 python manage.py migrate
-25. Configuración backend_agencia_de_marketing/settings.py
+## 25. Configuración backend_agencia_de_marketing/settings.py
 Agregar app_clientes a la lista INSTALLED_APPS.
 
 Python
 
+
 # backend_agencia_de_marketing/settings.py
+
 
 INSTALLED_APPS = [
     # ... otras apps de Django
     'app_clientes', # <--- NUEVA APP
 ]
-26. Enlace de URLs Principal (backend_agencia_de_marketing/urls.py)
+
+
+## 26. Enlace de URLs Principal (backend_agencia_de_marketing/urls.py)
 Python
+
+
 
 # backend_agencia_de_marketing/urls.py
 
@@ -302,7 +318,10 @@ urlpatterns = [
     # Enlace a las URLs de la aplicación clientes (ruta vacía para la raíz)
     path('', include('app_clientes.urls')), 
 ]
-27. Registro en Administración (app_clientes/admin.py)
+
+## 27. Registro en Administración (app_clientes/admin.py)
+
+
 Solo se registra el modelo Cliente por ahora.
 
 Python
@@ -316,7 +335,7 @@ from .models import Cliente, Empleado, Proyecto
 admin.site.register(Cliente)
 # Empleado y Proyecto pendientes
 🔑 Vistas y Rutas para CRUD (Clientes)
-24. Rutas de la Aplicación (app_clientes/urls.py)
+## 24. Rutas de la Aplicación (app_clientes/urls.py)
 Crear este archivo dentro de la carpeta app_clientes.
 
 Python
@@ -334,8 +353,11 @@ urlpatterns = [
     path('realizar_actualizacion/<int:id_cliente>/', views.realizar_actualizacion_cliente, name='realizar_actualizacion_cliente'),
     path('borrar/<int:id_cliente>/', views.borrar_cliente, name='borrar_cliente'),
 ]
-14. Vistas de Clientes (app_clientes/views.py)
+
+
+## 14. Vistas de Clientes (app_clientes/views.py)
 Python
+
 
 # app_clientes/views.py
 
@@ -398,7 +420,9 @@ def borrar_cliente(request, id_cliente):
 🎨 Archivos HTML (Templates)
 (Crear la carpeta templates dentro de app_clientes y la subcarpeta cliente dentro de templates)
 
-17. base.html (Incluye Bootstrap)
+## 17. base.html (Incluye Bootstrap)
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -434,3 +458,279 @@ def borrar_cliente(request, id_cliente):
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+18. navbar.html
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio_clientes' %}">
+            <i class="fas fa-chart-line me-2"></i>Sistema de Administración AgenciaDeMarketing
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_clientes' %}">
+                        <i class="fas fa-home me-1"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-users me-1"></i> Clientes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="clientesDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_clientes' %}">Ver Clientes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="empleadosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-hard-hat me-1"></i> Empleados
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="empleadosDropdown">
+                        <li><a class="dropdown-item" href="#">Agregar Empleados</a></li>
+                        <li><a class="dropdown-item" href="#">Ver Empleados</a></li>
+                        <li><a class="dropdown-item" href="#">Actualizar Empleados</a></li>
+                        <li><a class="dropdown-item" href="#">Borrar Empleados</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="proyectosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-project-diagram me-1"></i> Proyectos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="proyectosDropdown">
+                        <li><a class="dropdown-item" href="#">Agregar Proyectos</a></li>
+                        <li><a class="dropdown-item" href="#">Ver Proyectos</a></li>
+                        <li><a class="dropdown-item" href="#">Actualizar Proyectos</a></li>
+                        <li><a class="dropdown-item" href="#">Borrar Proyectos</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+19. footer.html (Fijo)
+
+
+<footer class="footer mt-auto py-3 text-white" style="background-color: #343a40; position: fixed; bottom: 0; width: 100%;">
+    <div class="container-fluid text-center">
+        <span class="text-white-50 small">
+            &copy; Derechos de Autor | {{ "now"|date:"Y" }} - Sistema de Administración AgenciaDeMarketing
+            <br>
+            Creado por **Ing. Edgar Orozco, Cbtis 128**
+        </span>
+    </div>
+</footer>
+
+
+
+20. inicio.html
+
+
+{% extends 'base.html' %}
+
+{% block title %}Inicio - AgenciaDeMarketing{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center bg-white p-5 rounded shadow-sm">
+    <h1 class="display-4" style="color: #28a745;"><i class="fas fa-bullhorn me-3"></i>¡Bienvenido al Sistema de Administración!</h1>
+    <p class="lead">Plataforma integral para gestionar Clientes, Empleados y Proyectos de la **AgenciaDeMarketing**.</p>
+    <hr class="my-4">
+    <p>Utilice la barra de navegación superior para acceder a las funcionalidades de CRUD.</p>
+</div>
+
+<div class="text-center mt-5">
+    
+    <p class="text-muted mt-2 small">Imagen de referencia para Agencia de Marketing.</p>
+</div>
+{% endblock %}
+
+
+22. agregar_cliente.html
+
+
+{% extends 'base.html' %}
+
+{% block title %}Agregar Cliente{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg border-0" style="border-left: 5px solid #ffc107;">
+            <div class="card-header bg-warning text-white p-3">
+                <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Agregar Nuevo Cliente</h3>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="id_nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_empresa" class="form-label">Empresa</label>
+                            <input type="text" class="form-control" id="id_empresa" name="empresa" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="id_correo" name="correo" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="id_telefono" name="telefono">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="id_direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="id_direccion" name="direccion">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id_estado" class="form-label">Estado</label>
+                            <select id="id_estado" name="estado" class="form-select" required>
+                                <option value="Activo" selected>Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <option value="Pendiente">Pendiente</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-warning w-100"><i class="fas fa-save me-2"></i>Guardar Cliente</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+22. ver_clientes.html
+{% extends 'base.html' %}
+
+{% block title %}Ver Clientes{% endblock %}
+
+{% block content %}
+<h2 class="mb-4" style="color: #007bff;"><i class="fas fa-list-alt me-2"></i>Lista de Clientes</h2>
+
+<div class="card shadow-lg border-0">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                        <th>Fecha Registro</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.empresa }}</td>
+                        <td>{{ cliente.correo }}</td>
+                        <td>{{ cliente.telefono|default_if_none:"N/A" }}</td>
+                        <td>
+                            <span class="badge {% if cliente.estado == 'Activo' %}bg-success{% elif cliente.estado == 'Inactivo' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                                {{ cliente.estado }}
+                            </span>
+                        </td>
+                        <td>{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
+                        <td class="text-center">
+                            <a href="{% url 'actualizar_cliente' cliente.id %}" class="btn btn-sm btn-info text-white me-2" title="Ver/Editar"><i class="fas fa-eye"></i></a>
+                            <a href="{% url 'actualizar_cliente' cliente.id %}" class="btn btn-sm btn-primary me-2" title="Editar"><i class="fas fa-edit"></i></a>
+                            <form action="{% url 'borrar_cliente' cliente.id %}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de que desea eliminar a {{ cliente.nombre }}?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger" title="Borrar"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">No hay clientes registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+22. actualizar_cliente.html
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Cliente{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg border-0" style="border-left: 5px solid #28a745;">
+            <div class="card-header bg-success text-white p-3">
+                <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Actualizar Cliente: {{ cliente.nombre }}</h3>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                <form method="POST" action="{% url 'realizar_actualizacion_cliente' cliente.id %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="id_nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="id_nombre" name="nombre" value="{{ cliente.nombre }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_empresa" class="form-label">Empresa</label>
+                            <input type="text" class="form-control" id="id_empresa" name="empresa" value="{{ cliente.empresa }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="id_correo" name="correo" value="{{ cliente.correo }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="id_telefono" name="telefono" value="{{ cliente.telefono|default_if_none:"" }}">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="id_direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="id_direccion" name="direccion" value="{{ cliente.direccion|default_if_none:"" }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id_estado" class="form-label">Estado</label>
+                            <select id="id_estado" name="estado" class="form-select" required>
+                                <option value="Activo" {% if cliente.estado == 'Activo' %}selected{% endif %}>Activo</option>
+                                <option value="Inactivo" {% if cliente.estado == 'Inactivo' %}selected{% endif %}>Inactivo</option>
+                                <option value="Pendiente" {% if cliente.estado == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-success w-100"><i class="fas fa-sync-alt me-2"></i>Actualizar Cliente</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
