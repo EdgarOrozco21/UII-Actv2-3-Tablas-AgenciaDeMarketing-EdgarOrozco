@@ -678,12 +678,4 @@ def borrar_cliente(request, id_cliente):
 {% endblock %}
 
 
-│   ├── __init__.py
-│   ├── admin.py                # Registro de Modelos (Paso 27)
-│   ├── apps.py
-│   ├── models.py               # Definición de Clientes/Empleados/Proyectos (Paso 12)
-│   ├── tests.py
-│   ├── urls.py                 # URLs de la aplicación (Paso 24)
-│   └── views.py                # Lógica del CRUD (Paso 14)
-├── manage.py                   # Script de Gestión de Django
-└── README.md                   # (Este Archivo)
+
