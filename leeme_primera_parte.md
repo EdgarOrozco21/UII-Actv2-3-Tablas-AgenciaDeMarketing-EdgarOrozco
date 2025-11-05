@@ -1,50 +1,250 @@
-# 🚀 Proyecto: UII_Agencia_De_Marketing_0591 (Primera Parte)
+# Proyecto: UIII_Agencia_De_Marketing_0591
 
-**Lenguaje:** Python | **Framework:** Django | **Editor:** VS Code
+**Lenguaje:** Python
+**Framework:** Django
+**Editor:** Visual Studio Code
 
 ---
 
-## 💻 Procedimientos de Configuración Inicial
+## Índice
 
-| Paso | Procedimiento | Comando de Terminal |
-| :--- | :--- | :--- |
-| **1** | Crear carpeta del Proyecto | `mkdir UII_Agencia_De_Marketing_0591` |
-| **2** | Abrir VS Code sobre la carpeta | `cd UII_Agencia_De_Marketing_0591` seguido de `code .` |
-| **3** | Abrir Terminal en VS Code | `Ctrl + Shift + \`` |
-| **4** | Crear carpeta entorno virtual `.venv` | `python -m venv .venv` |
-| **5** | Activar el entorno virtual | `source .venv/bin/activate` (Linux/macOS) o `.venv\Scripts\activate` (Windows) |
-| **6** | Activar intérprete de python | *(Automático al activar el entorno)* |
-| **7** | Instalar Django | `pip install django` |
-| **8** | Crear proyecto `backend_agencia_de_marketing` sin duplicar carpeta | `django-admin startproject backend_agencia_de_marketing .` |
-| **11**| Crear aplicación `app_clientes` | `python manage.py startapp app_clientes` |
+1. Estructura inicial y nombres
+2. Procedimientos (paso a paso)
 
-## 🛠️ Modelos, Migraciones y Configuración Core
+   * 1 Crear carpeta del proyecto
+   * 2 Abrir VS Code en la carpeta
+   * 3 Abrir terminal en VS Code
+   * 4 Crear entorno virtual `.venv`
+   * 5 Activar el entorno virtual
+   * 6 Activar intérprete de Python en VS Code
+   * 7 Instalar Django
+   * 8 Crear proyecto `backend_agencia_de_marketing` sin duplicar carpeta
+   * 9 Ejecutar servidor en el puerto `8591`
+   * 10 Copiar y pegar el link en el navegador
+   * 11 Crear aplicación `app_clientes`
+   * 12 Realizar migraciones (makemigrations y migrate)
+   * 13 Trabajar con el MODELO: `Cliente` (crear modelo y migrar)
+   * 14 Vistas de `app_clientes` (funciones CRUD)
+   * 15 Crear carpeta `templates` en `app_clientes` y archivos HTML
+   * 16 Estructura de templates y ejemplos (`base.html`, `navbar.html`, etc.)
+   * 17 Agregar Bootstrap en `base.html`
+   * 18 Barra de navegación (`navbar.html`) con opciones e íconos
+   * 19 Footer fijo con derechos de autor
+   * 20 Página de inicio (`inicio.html`) con imagen desde la web
+   * 21 Subcarpeta `cliente` en `app_clientes/templates`
+   * 22 Archivos HTML para cliente (agregar, ver, actualizar)
+   * 23 No usar `forms.py` (usar `request.POST`)
+   * 24 `urls.py` en `app_clientes` y en proyecto
+   * 25 Agregar `app_clientes` a `INSTALLED_APPS` en `settings.py`
+   * 26 Registrar modelos en `admin.py` y migraciones de nuevo
+   * 27 Solo trabajar con `Cliente` por ahora
+   * 28 Estética: colores suaves y diseño sencillo
+   * 29 Crear la estructura completa al inicio
+   * 30 Proyecto totalmente funcional
+   * 31 Ejecutar servidor en el puerto `8591` (repetido intencionalmente)
+3. Código fuente (archivos clave)
 
-### 12. Modelos (`app_clientes/models.py`)
+   * `models.py` (solo `Cliente` por ahora)
+   * `views.py` (funciones CRUD para clientes)
+   * `app_clientes/urls.py`
+   * `backend_agencia_de_marketing/urls.py`
+   * `admin.py`
+   * Templates: `base.html`, `navbar.html`, `footer.html`, `inicio.html`, `cliente/agregar_cliente.html`, `cliente/ver_clientes.html`, `cliente/actualizar_cliente.html`
+4. Comandos Git y subir a GitHub (procedimiento y `.gitignore`)
+5. Notas finales y recomendaciones
+
+---
+
+## 1. Estructura inicial recomendada (al terminar):
+
+```
+UIII_Agencia_De_Marketing_0591/
+├─ .venv/                  # entorno virtual (oculto normalmente)
+├─ backend_agencia_de_marketing/  # proyecto Django (contiene settings.py, urls.py)
+│  ├─ backend_agencia_de_marketing/
+│  │  ├─ __init__.py
+│  │  ├─ settings.py
+│  │  ├─ urls.py
+│  │  └─ wsgi.py
+│  └─ manage.py
+├─ app_clientes/
+│  ├─ migrations/
+│  ├─ templates/
+│  │  ├─ base.html
+│  │  ├─ header.html
+│  │  ├─ navbar.html
+│  │  ├─ footer.html
+│  │  ├─ inicio.html
+│  │  └─ cliente/
+│  │     ├─ agregar_cliente.html
+│  │     ├─ ver_clientes.html
+│  │     └─ actualizar_cliente.html
+│  ├─ admin.py
+│  ├─ apps.py
+│  ├─ models.py
+│  ├─ urls.py
+│  └─ views.py
+├─ .gitignore
+└─ README.md
+```
+
+---
+
+## 2. Procedimientos (paso a paso)
+
+> **Nota:** algunos comandos cambian ligeramente entre Windows y macOS/Linux. Indico variantes cuando corresponde.
+
+### 1) Crear carpeta del Proyecto: `UIII_Agencia_De_Marketing_0591`
+
+En tu explorador de archivos o terminal crea la carpeta:
+
+Linux / macOS / Windows PowerShell / CMD:
+
+```bash
+# en la carpeta donde quieras crear el proyecto:
+mkdir UIII_Agencia_De_Marketing_0591
+cd UIII_Agencia_De_Marketing_0591
+```
+
+### 2) Abrir VS Code sobre la carpeta `UIII_Agencia_De_Marketing_0591`
+
+En terminal (desde dentro de la carpeta):
+
+```bash
+code .
+```
+
+O abre VS Code y usa `File > Open Folder...` y selecciona `UIII_Agencia_De_Marketing_0591`.
+
+### 3) Abrir terminal en VS Code
+
+* Atajo: `` Ctrl+` `` (control + la tecla de la tilde invertida)
+* O `View > Terminal`.
+
+### 4) Crear carpeta entorno virtual `.venv` desde terminal de VS Code
+
+Recomendado crear el entorno virtual dentro de la carpeta del proyecto con nombre `.venv`:
+
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+```
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+```
+
+Esto crea la carpeta `.venv`.
+
+### 5) Activar el entorno virtual
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+# si da error de ejecución, usar: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Windows CMD:
+
+```cmd
+.\.venv\Scripts\activate
+```
+
+macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Verás el prompt cambiar a `(.venv)`.
+
+### 6) Activar intérprete de Python (VS Code)
+
+* Abre la paleta de comandos: `Ctrl+Shift+P`.
+* Escribe `Python: Select Interpreter` y elige la que apunta a la ruta `.../UIII_Agencia_De_Marketing_0591/.venv/bin/python` (o `Scripts\python.exe` en Windows).
+
+Esto asegura que VS Code use el entorno virtual para linting, ejecución y depuración.
+
+### 7) Instalar Django
+
+Con el entorno activado:
+
+```bash
+pip install --upgrade pip
+pip install django
+```
+
+Puedes fijar una versión si deseas: `pip install django==4.2` (por ejemplo).
+
+### 8) Crear proyecto `backend_agencia_de_marketing` sin duplicar carpeta
+
+**Importante**: para evitar crear una carpeta anidada debes ejecutar `django-admin startproject` dentro de la carpeta raíz y usar `.` o crear una carpeta con el nombre del proyecto.
+
+Opción A (crear carpeta del proyecto directamente — recomendado):
+
+```bash
+django-admin startproject backend_agencia_de_marketing .
+```
+
+El `.` al final crea los archivos del proyecto en la carpeta actual (evita una carpeta extra). Si prefieres tener una carpeta, omite el `.`.
+
+> Si ya ejecutaste `startproject backend_agencia_de_marketing` y se creó otra carpeta con el mismo nombre dentro, borra la carpeta innecesaria y repite con `.` o mueve los archivos.
+
+### 9) Ejecutar servidor en el puerto `8591`
+
+Primero crea la app `app_clientes` (punto 11) y realiza migraciones antes de correr. Para correr inmediatamente:
+
+```bash
+python manage.py runserver 8591
+```
+
+Si `python` apunta a Python 2 en tu SO, usa `python3`.
+
+### 10) Procedimiento para copiar y pegar el link en el navegador
+
+La consola mostrará algo como `Starting development server at http://127.0.0.1:8591/`. Copia esa URL y pégala en tu navegador.
+
+### 11) Crear aplicación `app_clientes`
+
+Con el entorno activado y ubicado en la raíz del proyecto (donde está `manage.py`):
+
+```bash
+python manage.py startapp app_clientes
+```
+
+### 12) Procedimiento para realizar las migraciones (makemigrations y migrate)
+
+Cada vez que cambies modelos:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Si quieres solo la app:
+
+```bash
+python manage.py makemigrations app_clientes
+python manage.py migrate
+```
+
+### 13) Primero trabajamos con el MODELO: `CLIENTE`
+
+A continuación está el `models.py` simplificado para `app_clientes` (solo `Cliente`).
+
+---
+
+## 3. Código fuente (archivos clave)
+
+### `app_clientes/models.py` (solo Cliente por ahora)
 
 ```python
 from django.db import models
 
-
-# ========================================== #
-# MODELO: EMPLEADO (Pendiente)
-# ==========================================#
-class Empleado(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
-    puesto = models.CharField(max_length=50)
-    correo = models.CharField(max_length=100, unique=True)
-    telefono = models.CharField(max_length=20, blank=True, null=True)
-    fecha_contratacion = models.DateField()
-    salario = models.DecimalField(max_digits=10, decimal_places=2)
-    area = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nombre
-
-# ========================================== #
-# MODELO: CLIENTE (Foco Principal)
-# ========================================== #
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
@@ -57,625 +257,470 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.empresa})"
+```
 
-# ========================================== #
-# MODELO: PROYECTO (Pendiente)
-# ========================================== #
-class Proyecto(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=150)
-    fecha_inicio = models.TextField(help_text="Descripción o detalles del proyecto")
-    fecha_entrega = models.DateField()
-    new_field_3 = models.IntegerField(default=0)
-    presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
-    estado = models.CharField(max_length=50)
-    # Relaciones (Foreign Keys)
-    cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="proyectos")
-    empleado_id = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name="proyectos_asignados")
+> **Nota:** He dejado solo `Cliente` ya que solicitaste trabajar solo con este modelo por ahora.
 
-    def __str__(self):
-        return self.nombre
+---
 
-### 📂 Estructura del Proyecto
-UII_Agencia_De_Marketing_0591/
-├── .venv/                      # Entorno Virtual de Python (Paso 4)
-├── backend_agencia_de_marketing/ # Proyecto Principal (Paso 8)
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py             # Configuración de apps/URLs principales (Paso 25)
-│   ├── urls.py                 # Enrutamiento principal (Paso 26)
-│   └── wsgi.py
-├── app_clientes/               # Aplicación CRUD Clientes (Paso 11)
-│   ├── migrations/
-│   ├── templates/              # Carpeta de Templates
-│   │   ├── cliente/            # Templates específicos de la app
-│   │   │   ├── agregar_cliente.html (Paso 28)
-│   │   │   ├── actualizar_cliente.html (Paso 30)
-│   │   │   └── ver_clientes.html (Paso 29)
-│   │   ├── base.html           # Layout Principal (Paso 17)
-│   │   ├── navbar.html         # Barra de Navegación (Paso 18)
-│   │   ├── footer.html         # Pie de Página (Paso 19)
-│   │   └── inicio.html         # Página de Inicio (Paso 20)
-
-
-##  Hacer Migraciones
-python manage.py makemigrations app_clientes
-python manage.py migrate
-
-## Configuración backend_agencia_de_marketing/settings.py
-Agregar app_clientes a la lista INSTALLED_APPS.
-
-# backend_agencia_de_marketing/settings.py
-
-INSTALLED_APPS = [
-    # ... otras apps de Django
-    'app_clientes', # <--- NUEVA APP
-]
-
-## Enlace de URLs Principal (backend_agencia_de_marketing/urls.py)
-# backend_agencia_de_marketing/urls.py
-
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    # Enlace a las URLs de la aplicación clientes (ruta vacía para la raíz)
-    path('', include('app_clientes.urls')), 
-]
-
-##  27. Registro en Administración (app_clientes/admin.py)
-
-
-
-Solo se registra el modelo Cliente por ahora.
-
-## app_clientes/admin.py
-
-from django.contrib import admin
-from .models import Cliente, Empleado, Proyecto
-
-## Registrado el modelo Cliente (Paso 27)
-admin.site.register(Cliente)
-
-## Empleado y Proyecto pendientes
-
-
-🔑 Vistas y Rutas para CRUD (Clientes)
-## 24. Rutas de la Aplicación (app_clientes/urls.py)
-
-
-Crear este archivo dentro de la carpeta app_clientes.
-
-# app_clientes/urls.py
-
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('', views.inicio_clientes, name='inicio_clientes'),
-    path('agregar/', views.agregar_cliente, name='agregar_cliente'),
-    path('ver/', views.ver_clientes, name='ver_clientes'),
-    path('actualizar/<int:id_cliente>/', views.actualizar_cliente, name='actualizar_cliente'),
-    path('realizar_actualizacion/<int:id_cliente>/', views.realizar_actualizacion_cliente, name='realizar_actualizacion_cliente'),
-    path('borrar/<int:id_cliente>/', views.borrar_cliente, name='borrar_cliente'),
-]
-
-### Vistas de Clientes (app_clientes/views.py)
-## app_clientes/views.py
-
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cliente
-from django.db import IntegrityError 
-
-# Funciones de Vistas para Cliente (Paso 14)
-def inicio_clientes(request):
-    return render(request, 'inicio.html')
-
-def ver_clientes(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'cliente/ver_clientes.html', {'clientes': clientes})
-
-def agregar_cliente(request):
-    if request.method == 'POST':
-        # ... lógica de guardado
-        nombre = request.POST.get('nombre')
-        empresa = request.POST.get('empresa')
-        correo = request.POST.get('correo')
-        telefono = request.POST.get('telefono')
-        direccion = request.POST.get('direccion')
-        estado = request.POST.get('estado')
-        try:
-            Cliente.objects.create(nombre=nombre, empresa=empresa, correo=correo, telefono=telefono, direccion=direccion, estado=estado)
-            return redirect('ver_clientes')
-        except IntegrityError:
-            mensaje_error = "El correo electrónico ya está registrado."
-            return render(request, 'cliente/agregar_cliente.html', {'error': mensaje_error})
-    return render(request, 'cliente/agregar_cliente.html')
-
-def actualizar_cliente(request, id_cliente):
-    cliente = get_object_or_404(Cliente, id=id_cliente)
-    return render(request, 'cliente/actualizar_cliente.html', {'cliente': cliente})
-
-def realizar_actualizacion_cliente(request, id_cliente):
-    if request.method == 'POST':
-        cliente = get_object_or_404(Cliente, id=id_cliente)
-        
-        cliente.nombre = request.POST.get('nombre')
-        cliente.empresa = request.POST.get('empresa')
-        cliente.correo = request.POST.get('correo')
-        cliente.telefono = request.POST.get('telefono')
-        cliente.direccion = request.POST.get('direccion')
-        cliente.estado = request.POST.get('estado')
-
-        try:
-            cliente.save()
-            return redirect('ver_clientes')
-        except IntegrityError:
-            mensaje_error = "El correo electrónico ya está registrado."
-            return render(request, 'cliente/actualizar_cliente.html', {'cliente': cliente, 'error': mensaje_error})
-    return redirect('actualizar_cliente', id_cliente=id_cliente)
-
-def borrar_cliente(request, id_cliente):
-    cliente = get_object_or_404(Cliente, id=id_cliente)
-    cliente.delete()
-    return redirect('ver_clientes')|
-
+### `app_clientes/views.py` (funciones: inicio_clientes, agregar_cliente, ver_clientes, actualizar_cliente, realizar_actualizacion_cliente, borrar_cliente)
 
 ```python
-from django.db import models
-
-## 12.5. Procedimiento para Realizar Migraciones
-Bash
-
-
-
-python manage.py makemigrations app_clientes
-python manage.py migrate
-## 25. Configuración backend_agencia_de_marketing/settings.py
-Agregar app_clientes a la lista INSTALLED_APPS.
-
-Python
-
-
-# backend_agencia_de_marketing/settings.py
-
-
-INSTALLED_APPS = [
-    # ... otras apps de Django
-    'app_clientes', # <--- NUEVA APP
-]
-
-
-## 26. Enlace de URLs Principal (backend_agencia_de_marketing/urls.py)
-Python
-
-
-
-# backend_agencia_de_marketing/urls.py
-
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    # Enlace a las URLs de la aplicación clientes (ruta vacía para la raíz)
-    path('', include('app_clientes.urls')), 
-]
-
-## 27. Registro en Administración (app_clientes/admin.py)
-
-
-Solo se registra el modelo Cliente por ahora.
-
-Python
-
-# app_clientes/admin.py
-
-from django.contrib import admin
-from .models import Cliente, Empleado, Proyecto
-
-# Registrado el modelo Cliente (Paso 27)
-admin.site.register(Cliente)
-# Empleado y Proyecto pendientes
-🔑 Vistas y Rutas para CRUD (Clientes)
-## 24. Rutas de la Aplicación (app_clientes/urls.py)
-Crear este archivo dentro de la carpeta app_clientes.
-
-Python
-
-# app_clientes/urls.py
-
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('', views.inicio_clientes, name='inicio_clientes'),
-    path('agregar/', views.agregar_cliente, name='agregar_cliente'),
-    path('ver/', views.ver_clientes, name='ver_clientes'),
-    path('actualizar/<int:id_cliente>/', views.actualizar_cliente, name='actualizar_cliente'),
-    path('realizar_actualizacion/<int:id_cliente>/', views.realizar_actualizacion_cliente, name='realizar_actualizacion_cliente'),
-    path('borrar/<int:id_cliente>/', views.borrar_cliente, name='borrar_cliente'),
-]
-
-
-## 14. Vistas de Clientes (app_clientes/views.py)
-Python
-
-
-# app_clientes/views.py
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cliente
-from django.db import IntegrityError 
+from django.utils import timezone
 
-# Funciones de Vistas para Cliente (Paso 14)
+# 1. Página de inicio (informativa)
 def inicio_clientes(request):
     return render(request, 'inicio.html')
 
-def ver_clientes(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'cliente/ver_clientes.html', {'clientes': clientes})
-
+# 2. Agregar cliente (mostrando formulario simple y guardando sin forms.py)
 def agregar_cliente(request):
     if request.method == 'POST':
-        # ... lógica de guardado
         nombre = request.POST.get('nombre')
         empresa = request.POST.get('empresa')
         correo = request.POST.get('correo')
         telefono = request.POST.get('telefono')
         direccion = request.POST.get('direccion')
         estado = request.POST.get('estado')
-        try:
-            Cliente.objects.create(nombre=nombre, empresa=empresa, correo=correo, telefono=telefono, direccion=direccion, estado=estado)
-            return redirect('ver_clientes')
-        except IntegrityError:
-            mensaje_error = "El correo electrónico ya está registrado."
-            return render(request, 'cliente/agregar_cliente.html', {'error': mensaje_error})
+
+        Cliente.objects.create(
+            nombre=nombre,
+            empresa=empresa,
+            correo=correo,
+            telefono=telefono,
+            direccion=direccion,
+            estado=estado
+        )
+        return redirect('ver_clientes')
+
     return render(request, 'cliente/agregar_cliente.html')
 
-def actualizar_cliente(request, id_cliente):
-    cliente = get_object_or_404(Cliente, id=id_cliente)
+# 3. Ver clientes (lista)
+def ver_clientes(request):
+    clientes = Cliente.objects.all().order_by('-fecha_registro')
+    return render(request, 'cliente/ver_clientes.html', {'clientes': clientes})
+
+# 4. Mostrar formulario de actualización
+def actualizar_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
     return render(request, 'cliente/actualizar_cliente.html', {'cliente': cliente})
 
-def realizar_actualizacion_cliente(request, id_cliente):
+# 5. Realizar la actualización (POST)
+def realizar_actualizacion_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
     if request.method == 'POST':
-        cliente = get_object_or_404(Cliente, id=id_cliente)
-        
         cliente.nombre = request.POST.get('nombre')
         cliente.empresa = request.POST.get('empresa')
         cliente.correo = request.POST.get('correo')
         cliente.telefono = request.POST.get('telefono')
         cliente.direccion = request.POST.get('direccion')
         cliente.estado = request.POST.get('estado')
+        cliente.save()
+        return redirect('ver_clientes')
+    return redirect('actualizar_cliente', cliente_id=cliente.id)
 
-        try:
-            cliente.save()
-            return redirect('ver_clientes')
-        except IntegrityError:
-            mensaje_error = "El correo electrónico ya está registrado."
-            return render(request, 'cliente/actualizar_cliente.html', {'cliente': cliente, 'error': mensaje_error})
-    return redirect('actualizar_cliente', id_cliente=id_cliente)
+# 6. Borrar cliente
+def borrar_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    if request.method == 'POST':
+        cliente.delete()
+        return redirect('ver_clientes')
+    # opcional: pedir confirmación con una plantilla
+    return render(request, 'cliente/confirmar_borrado.html', {'cliente': cliente})
+```
 
-def borrar_cliente(request, id_cliente):
-    cliente = get_object_or_404(Cliente, id=id_cliente)
-    cliente.delete()
-    return redirect('ver_clientes')
-🎨 Archivos HTML (Templates)
-(Crear la carpeta templates dentro de app_clientes y la subcarpeta cliente dentro de templates)
+> Observación: yo incluyo una plantilla opcional `confirmar_borrado.html`. Si no deseas confirmación, puedes borrar directamente con `Cliente.objects.filter(id=cliente_id).delete()`.
 
-## 17. base.html (Incluye Bootstrap)
+---
 
+### `app_clientes/urls.py`
 
-<!DOCTYPE html>
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.inicio_clientes, name='inicio_clientes'),
+    path('clientes/agregar/', views.agregar_cliente, name='agregar_cliente'),
+    path('clientes/', views.ver_clientes, name='ver_clientes'),
+    path('clientes/actualizar/<int:cliente_id>/', views.actualizar_cliente, name='actualizar_cliente'),
+    path('clientes/realizar_actualizacion/<int:cliente_id>/', views.realizar_actualizacion_cliente, name='realizar_actualizacion_cliente'),
+    path('clientes/borrar/<int:cliente_id>/', views.borrar_cliente, name='borrar_cliente'),
+]
+```
+
+---
+
+### `backend_agencia_de_marketing/urls.py` (archivo principal del proyecto)
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('app_clientes.urls')),
+]
+```
+
+---
+
+### `app_clientes/admin.py`
+
+```python
+from django.contrib import admin
+from .models import Cliente
+
+@admin.register(Cliente)
+class ClienteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre', 'empresa', 'correo', 'telefono', 'fecha_registro', 'estado')
+    search_fields = ('nombre', 'empresa', 'correo')
+```
+
+---
+
+## 4. Templates (básicos y simples, colores suaves)
+
+### `templates/base.html`
+
+```html
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}AgenciaDeMarketing{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <style>
-        body {
-            background-color: #f8f9fa; /* Colores suaves */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .content-wrap {
-            padding-bottom: 60px;
-            flex: 1;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgenciaDeMarketing</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="content-wrap">
-        {% include 'header.html' %}
-        {% include 'navbar.html' %}
-        <main class="container mt-4">
-            {% block content %}
-            {% endblock %}
-        </main>
-    </div>
-    {% include 'footer.html' %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<body class="bg-light text-dark">
+  {% include 'navbar.html' %}
+
+  <main class="container py-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'footer.html' %}
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+```
 
-18. navbar.html
+### `templates/navbar.html`
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'inicio_clientes' %}">
-            <i class="fas fa-chart-line me-2"></i>Sistema de Administración AgenciaDeMarketing
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_clientes' %}">
-                        <i class="fas fa-home me-1"></i> Inicio
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-users me-1"></i> Clientes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="clientesDropdown">
-                        <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
-                        <li><a class="dropdown-item" href="{% url 'ver_clientes' %}">Ver Clientes</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="empleadosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-hard-hat me-1"></i> Empleados
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empleadosDropdown">
-                        <li><a class="dropdown-item" href="#">Agregar Empleados</a></li>
-                        <li><a class="dropdown-item" href="#">Ver Empleados</a></li>
-                        <li><a class="dropdown-item" href="#">Actualizar Empleados</a></li>
-                        <li><a class="dropdown-item" href="#">Borrar Empleados</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="proyectosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-project-diagram me-1"></i> Proyectos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="proyectosDropdown">
-                        <li><a class="dropdown-item" href="#">Agregar Proyectos</a></li>
-                        <li><a class="dropdown-item" href="#">Ver Proyectos</a></li>
-                        <li><a class="dropdown-item" href="#">Actualizar Proyectos</a></li>
-                        <li><a class="dropdown-item" href="#">Borrar Proyectos</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+```html
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <!-- ícono simple usando emoji o svg -->
+      <span style="font-weight:700; font-size:1.1rem;">🚀</span>
+      <span class="ms-2">Sistema de Administración AgenciaDeMarketing</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Clientes</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
+            <li><a class="dropdown-item" href="{% url 'ver_clientes' %}">Ver Clientes</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Empleados</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Agregar Empleados</a></li>
+            <li><a class="dropdown-item" href="#">Ver Empleados</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Proyectos</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Agregar Proyectos</a></li>
+            <li><a class="dropdown-item" href="#">Ver Proyectos</a></li>
+          </ul>
+        </li>
+
+      </ul>
     </div>
+  </div>
 </nav>
+```
 
+> **Nota:** los íconos principales pueden ser emojis o usar icon libraries luego (p. ej. FontAwesome). No los incluí en submenus como pediste.
 
-19. footer.html (Fijo)
+### `templates/footer.html`
 
-
-<footer class="footer mt-auto py-3 text-white" style="background-color: #343a40; position: fixed; bottom: 0; width: 100%;">
-    <div class="container-fluid text-center">
-        <span class="text-white-50 small">
-            &copy; Derechos de Autor | {{ "now"|date:"Y" }} - Sistema de Administración AgenciaDeMarketing
-            <br>
-            Creado por **Ing. Edgar Orozco, Cbtis 128**
-        </span>
-    </div>
+```html
+<footer class="bg-white text-center py-3 mt-auto shadow-sm" style="position:fixed; left:0; right:0; bottom:0;">
+  <div class="container">
+    <small>
+      © {{ now|date:"Y" }} - Derechos reservados. Creado por Ing. Edgar Orozco, Cbtis 128
+    </small>
+  </div>
 </footer>
+```
 
+**Nota:** Para que `now` funcione en plantillas, asegúrate de habilitar el contexto o usar `from django.utils import timezone` y pasar la fecha desde la vista. Alternativamente usa la etiqueta `now` de Django: `{% now "Y" %}`.
 
+### `templates/inicio.html`
 
-20. inicio.html
-
-
+```html
 {% extends 'base.html' %}
 
-{% block title %}Inicio - AgenciaDeMarketing{% endblock %}
-
 {% block content %}
-<div class="jumbotron text-center bg-white p-5 rounded shadow-sm">
-    <h1 class="display-4" style="color: #28a745;"><i class="fas fa-bullhorn me-3"></i>¡Bienvenido al Sistema de Administración!</h1>
-    <p class="lead">Plataforma integral para gestionar Clientes, Empleados y Proyectos de la **AgenciaDeMarketing**.</p>
-    <hr class="my-4">
-    <p>Utilice la barra de navegación superior para acceder a las funcionalidades de CRUD.</p>
-</div>
-
-<div class="text-center mt-5">
-    
-    <p class="text-muted mt-2 small">Imagen de referencia para Agencia de Marketing.</p>
-</div>
-{% endblock %}
-
-
-22. agregar_cliente.html
-
-
-{% extends 'base.html' %}
-
-{% block title %}Agregar Cliente{% endblock %}
-
-{% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-lg border-0" style="border-left: 5px solid #ffc107;">
-            <div class="card-header bg-warning text-white p-3">
-                <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Agregar Nuevo Cliente</h3>
-            </div>
-            <div class="card-body">
-                {% if error %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
-                    </div>
-                {% endif %}
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="id_nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="id_nombre" name="nombre" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_empresa" class="form-label">Empresa</label>
-                            <input type="text" class="form-control" id="id_empresa" name="empresa" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_correo" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="id_correo" name="correo" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="id_telefono" name="telefono">
-                        </div>
-                        <div class="col-md-8">
-                            <label for="id_direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="id_direccion" name="direccion">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="id_estado" class="form-label">Estado</label>
-                            <select id="id_estado" name="estado" class="form-select" required>
-                                <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                                <option value="Pendiente">Pendiente</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-warning w-100"><i class="fas fa-save me-2"></i>Guardar Cliente</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <h1>Bienvenido al Sistema de Administración</h1>
+      <p>AgenciaDeMarketing - Gestiona clientes y proyectos de forma simple.</p>
     </div>
-</div>
-{% endblock %}
-
-
-22. ver_clientes.html
-{% extends 'base.html' %}
-
-{% block title %}Ver Clientes{% endblock %}
-
-{% block content %}
-<h2 class="mb-4" style="color: #007bff;"><i class="fas fa-list-alt me-2"></i>Lista de Clientes</h2>
-
-<div class="card shadow-lg border-0">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle">
-                <thead class="table-primary">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Empresa</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Estado</th>
-                        <th>Fecha Registro</th>
-                        <th class="text-center">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cliente in clientes %}
-                    <tr>
-                        <td>{{ cliente.id }}</td>
-                        <td>{{ cliente.nombre }}</td>
-                        <td>{{ cliente.empresa }}</td>
-                        <td>{{ cliente.correo }}</td>
-                        <td>{{ cliente.telefono|default_if_none:"N/A" }}</td>
-                        <td>
-                            <span class="badge {% if cliente.estado == 'Activo' %}bg-success{% elif cliente.estado == 'Inactivo' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
-                                {{ cliente.estado }}
-                            </span>
-                        </td>
-                        <td>{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
-                        <td class="text-center">
-                            <a href="{% url 'actualizar_cliente' cliente.id %}" class="btn btn-sm btn-info text-white me-2" title="Ver/Editar"><i class="fas fa-eye"></i></a>
-                            <a href="{% url 'actualizar_cliente' cliente.id %}" class="btn btn-sm btn-primary me-2" title="Editar"><i class="fas fa-edit"></i></a>
-                            <form action="{% url 'borrar_cliente' cliente.id %}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de que desea eliminar a {{ cliente.nombre }}?');">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-sm btn-danger" title="Borrar"><i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="8" class="text-center text-muted">No hay clientes registrados.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <div class="col-md-6">
+      <!-- Imagen desde la web: usar URL válida (ejemplo de Unsplash) -->
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Agencia de Marketing" class="img-fluid rounded">
     </div>
-</div>
+  </div>
 {% endblock %}
+```
 
+### `templates/cliente/agregar_cliente.html`
 
-22. actualizar_cliente.html
+```html
 {% extends 'base.html' %}
-
-{% block title %}Actualizar Cliente{% endblock %}
-
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-lg border-0" style="border-left: 5px solid #28a745;">
-            <div class="card-header bg-success text-white p-3">
-                <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Actualizar Cliente: {{ cliente.nombre }}</h3>
-            </div>
-            <div class="card-body">
-                {% if error %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
-                    </div>
-                {% endif %}
-                <form method="POST" action="{% url 'realizar_actualizacion_cliente' cliente.id %}">
-                    {% csrf_token %}
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="id_nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="id_nombre" name="nombre" value="{{ cliente.nombre }}" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_empresa" class="form-label">Empresa</label>
-                            <input type="text" class="form-control" id="id_empresa" name="empresa" value="{{ cliente.empresa }}" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_correo" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="id_correo" name="correo" value="{{ cliente.correo }}" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="id_telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="id_telefono" name="telefono" value="{{ cliente.telefono|default_if_none:"" }}">
-                        </div>
-                        <div class="col-md-8">
-                            <label for="id_direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="id_direccion" name="direccion" value="{{ cliente.direccion|default_if_none:"" }}">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="id_estado" class="form-label">Estado</label>
-                            <select id="id_estado" name="estado" class="form-select" required>
-                                <option value="Activo" {% if cliente.estado == 'Activo' %}selected{% endif %}>Activo</option>
-                                <option value="Inactivo" {% if cliente.estado == 'Inactivo' %}selected{% endif %}>Inactivo</option>
-                                <option value="Pendiente" {% if cliente.estado == 'Pendiente' %}selected{% endif %}>Pendiente</option>
-                            </select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-success w-100"><i class="fas fa-sync-alt me-2"></i>Actualizar Cliente</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<h2>Agregar Cliente</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input class="form-control" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Empresa</label>
+    <input class="form-control" name="empresa">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Correo</label>
+    <input class="form-control" name="correo" type="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input class="form-control" name="telefono">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <input class="form-control" name="direccion">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Estado</label>
+    <input class="form-control" name="estado">
+  </div>
+  <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
 {% endblock %}
+```
 
+### `templates/cliente/ver_clientes.html`
 
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Clientes</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Empresa</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in clientes %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.nombre }}</td>
+      <td>{{ c.empresa }}</td>
+      <td>{{ c.correo }}</td>
+      <td>{{ c.telefono }}</td>
+      <td>{{ c.fecha_registro }}</td>
+      <td>{{ c.estado }}</td>
+      <td>
+        <a class="btn btn-sm btn-info" href="{% url 'actualizar_cliente' c.id %}">Editar</a>
+        <form action="{% url 'borrar_cliente' c.id %}" method="post" style="display:inline-block;">
+          {% csrf_token %}
+          <button class="btn btn-sm btn-danger" type="submit">Borrar</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="8">No hay clientes registrados.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+```
 
+### `templates/cliente/actualizar_cliente.html`
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Cliente</h2>
+<form method="post" action="{% url 'realizar_actualizacion_cliente' cliente.id %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input class="form-control" name="nombre" value="{{ cliente.nombre }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Empresa</label>
+    <input class="form-control" name="empresa" value="{{ cliente.empresa }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Correo</label>
+    <input class="form-control" name="correo" value="{{ cliente.correo }}" type="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input class="form-control" name="telefono" value="{{ cliente.telefono }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <input class="form-control" name="direccion" value="{{ cliente.direccion }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Estado</label>
+    <input class="form-control" name="estado" value="{{ cliente.estado }}">
+  </div>
+  <button class="btn btn-success" type="submit">Actualizar</button>
+</form>
+{% endblock %}
+```
+
+---
+
+## 5. `settings.py` - agregar `app_clientes` a `INSTALLED_APPS`
+
+En `backend_agencia_de_marketing/settings.py`:
+
+```python
+INSTALLED_APPS = [
+    # apps de Django...
+    'django.contrib.admin',
+    'django.contrib.auth',
+    # ...
+
+    # nuestras apps
+    'app_clientes',
+]
+
+# Opcional: si quieres que las plantillas las busque en app templates, deja TEMPLATE 'APP_DIRS': True (por defecto sí está)
+```
+
+---
+
+## 6. Registrar modelos en admin y volver a migrar
+
+1. Edita `app_clientes/admin.py` (ver arriba).
+2. Ejecuta:
+
+```bash
+python manage.py makemigrations app_clientes
+python manage.py migrate
+```
+
+---
+
+## 7. Git y GitHub (subir el proyecto)
+
+1. Crear `.gitignore` (ejemplo):
+
+```
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env/
+# virtual env
+.venv/
+
+# Django
+*.sqlite3
+/staticfiles/
+/media/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+```
+
+2. Inicializar repo y primer commit:
+
+```bash
+git init
+git add .
+git commit -m "Inicial: Proyecto UIII_Agencia_De_Marketing_0591 - base"
+```
+
+3. Crear repo en GitHub (interfaz web) y seguir instrucciones para conectar remoto:
+
+```bash
+git remote add origin git@github.com:TU_USUARIO/TU_REPO.git
+git branch -M main
+git push -u origin main
+```
+
+Si usas HTTPS: `git remote add origin https://github.com/TU_USUARIO/TU_REPO.git` y luego `git push -u origin main`.
+
+---
+
+## 8. Comprobaciones y puesta en marcha final
+
+1. Asegúrate de que `app_clientes` esté en `INSTALLED_APPS`.
+2. Ejecuta migrations: `python manage.py makemigrations` y `python manage.py migrate`.
+3. Crea superusuario para acceder a admin: `python manage.py createsuperuser` y sigue indicaciones.
+4. Ejecuta servidor: `python manage.py runserver 8591`.
+5. Abre `http://127.0.0.1:8591/` en tu navegador.
+
+---
+
+## 9. Notas, limitaciones y recomendaciones
+
+* No validamos entrada como pediste (sin validación). En producción siempre valida y limpia datos.
+* Este README se centra en `Cliente`. Los modelos `Empleado` y `Proyecto` quedaron pendientes tal como solicitaste.
+* Si más adelante quieres agregar formularios completos con validación, te sugiero usar `forms.py` y `ModelForm`.
+* Para iconos más profesionales puedes usar FontAwesome o Bootstrap Icons.
+* Si deseas que el footer muestre la fecha del sistema sin pasarla desde la vista, usa `{% now "Y" %}` en la plantilla.
+
+---
+
+## 10. Añadir al README de GitHub
+
+Copia este documento y pégalo en el `README.md` de tu repositorio. Incluye también instrucciones para ejecutar en local (venv, instalar dependencias, migraciones y runserver) y una captura de pantalla si quieres.
+
+---
+
+Si quieres, puedo ahora:
+
+* Generar los archivos exactos (código listo para pegar) en un ZIP descargable,
+* O crear una estructura de archivos en el canvas para que copies/pegues más rápido.
+
+Dime cuál prefieres y lo hago ahora.
